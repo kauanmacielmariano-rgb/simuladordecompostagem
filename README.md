@@ -9,6 +9,7 @@ Ele consiste em uma ferramenta educacional e interativa voltada para a conscient
 
 ## Identificação do Desenvolvedor e Instituição
 Estudante: Kauan Maciel Mariano
+CGM: 1010594738
 Série: 1º ano "A" - Técnico em agropecuária Integral
 Componente Curricular: Educação digital programação comutação e  IA
 Instituição de Ensino: Centro Estadual de Educação Profissional Olegário Macedo

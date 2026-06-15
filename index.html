@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Compostagem | Agrinho 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <h1>Simulador de Compostagem</h1>
+    <p>Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente</p>
+    
+    <div class="tema-controle-hibrido">
+      <span class="tema-label-desktop" id="tema-texto">Modo claro</span>
+      <button id="btn-tema" 
+              aria-label="Alternar entre modo claro e escuro" 
+              title="Mudar tema"
+              class="btn-tema">
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="progresso" aria-hidden="true">
+      <div class="barra" id="barra-progresso"></div>
+      <ul class="etapas-indicador">
+        <li class="ativa" data-etapa="1">1. Dados</li>
+        <li data-etapa="2">2. Configuração</li>
+        <li data-etapa="3">3. Resultado</li>
+      </ul>
+    </div>
+
+    <section class="etapa etapa-1 ativa" id="etapa-1">
+      <h2>Informe os dados do seu resíduo orgânico</h2>
+      <form id="form-dados">
+        <label for="tipo-residuo">Tipo de material:</label>
+        <select id="tipo-residuo" required>
+          <option value="" disabled selected>Selecione...</option>
+          <option value="restos-alimentares">Restos alimentares</option>
+          <option value="folhas-jardim">Folhas e podas de jardim</option>
+          <option value="casca-ovo-borra">Cascas de frutas, ovos e borra de café</option>
+          <option value="estercos">Esterco de pequenos animais</option>
+        </select>
+
+        <label for="quantidade">Quantidade semanal (kg):</label>
+        <input type="number" id="quantidade" min="1" max="1000" step="0.1" placeholder="Ex: 15.5" required>
+
+        <div class="acoes">
+          <button type="button" class="btn proximo">Próximo ➜</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="etapa etapa-2" id="etapa-2">
+      <h2>Configure a sua composteira</h2>
+      <form id="form-config">
+        <label for="tipo-composteira">Modelo de composteira:</label>
+        <select id="tipo-composteira" required>
+          <option value="domestica">Doméstica (baldes/vermicompostagem)</option>
+          <option value="leiras">Leiras ao ar livre (rural/comunitária)</option>
+          <option value="rotativa">Barril rotativo</option>
+        </select>
+
+        <label for="frequencia">Frequência de revolvimento:</label>
+        <select id="frequencia" required>
+          <option value="semanal">Semanal</option>
+          <option value="quinzenal">Quinzenal</option>
+          <option value="mensal">Mensal</option>
+        </select>
+
+        <div class="acoes">
+          <button type="button" class="btn voltar">⬅ Voltar</button>
+          <button type="button" class="btn calcular">Calcular Impacto 🌍</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="etapa etapa-3" id="etapa-3">
+      <h2>Simulação Concluída</h2>
+      <div class="resultado-grid">
+        <div class="card">
+          <h3>Tempo estimado</h3>
+          <p id="res-tempo">--</p>
+        </div>
+        <div class="card">
+          <h3>Composto gerado</h3>
+          <p id="res-composto">--</p>
+        </div>
+        <div class="card">
+          <h3>Retenção de água no solo</h3>
+          <p id="res-agua">--</p>
+        </div>
+        <div class="card destaque">
+          <h3>CO₂ evitado (por ano)</h3>
+          <p id="res-co2">--</p>
+        </div>
+      </div>
+      <p class="mensagem-tema" id="msg-tema"></p>
+      <div class="acoes">
+        <button type="button" class="btn voltar">⬅ Voltar</button>
+        <button type="button" class="btn resetar">Nova Simulação</button>
+      </div>
+    </section>
+  </main>
+
+  <button id="btn-ajuda" class="btn-ajuda-flutuante" aria-label="Ajuda - Como usar o simulador" title="Clique para ver o tutorial">
+    <span class="icone-ajuda">❓</span>
+    <span class="texto-ajuda">Como usar?</span>
+  </button>
+
+  <div id="modal-tutorial" class="modal-overlay">
+    <div class="modal-conteudo">
+      <button id="btn-fechar-modal" class="btn-fechar-modal" aria-label="Fechar tutorial">&times;</button>
+      
+      <div class="modal-header">
+        <h2>Como usar o Simulador</h2>
+        <p>Siga o passo a passo abaixo:</p>
+      </div>
+      
+      <div class="modal-corpo">
+        <div class="passo-tutorial">
+          <div class="numero-passo">1</div>
+          <div class="conteudo-passo">
+            <h3>Informe os dados</h3>
+            <p>Selecione o <strong>tipo de material</strong> e informe a <strong>quantidade semanal (kg)</strong> que você gera.</p>
+          </div>
+        </div>
+        
+        <div class="passo-tutorial">
+          <div class="numero-passo">2</div>
+          <div class="conteudo-passo">
+            <h3>Configure a composteira</h3>
+            <p>Escolha o <strong>modelo</strong> e a <strong>frequência de revolvimento</strong> para calcular o tempo exato.</p>
+          </div>
+        </div>
+        
+        <div class="passo-tutorial">
+          <div class="numero-passo">3</div>
+          <div class="conteudo-passo">
+            <h3>Veja os resultados</h3>
+            <p>Clique em <strong>"Calcular Impacto"</strong> para ver quanto CO₂ você evita e água retém no solo.</p>
+          </div>
+        </div>
+        
+        <div class="dica-destaque">
+          <h4>Dica:</h4>
+          <p>Quanto mais frequente o revolvimento, mais rápido o processo e menor o impacto ambiental!</p>
+        </div>
+      </div>
+      
+      <div class="modal-rodape">
+        <button id="btn-comecar" class="btn-comecar">Entendi! Começar agora ➜</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="rodape">
+    <p>Projeto desenvolvido para o <strong>Concurso Agrinho 2026</strong></p>
+    <p>HTML, CSS e JavaScript puros | Front-End Educacional</p>
+    <p class="credito-banner">Banner: criado via Canva</p>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+/* ============================================
+   VARIÁVEIS DE TEMA
+   ============================================ */
+:root {
+  --cor-fundo: #f8fafc;
+  --cor-texto: #1e293b;
+  --cor-primaria: #166534;
+  --cor-secundaria: #65a30d;
+  --cor-card: #ffffff;
+  --cor-borda: #e2e8f0;
+  --cor-sombra: rgba(0, 0, 0, 0.1);
+  --raio: 12px;
+  --transicao: all 0.3s ease;
+}
+
+/* MODO ESCURO */
+body.dark-mode {
+  --cor-fundo: #0f172a;
+  --cor-texto: #e2e8f0;
+  --cor-card: #1e293b;
+  --cor-borda: #334155;
+  --cor-sombra: rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
+   RESET E BASE
+   ============================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  transition: var(--transicao);
+  line-height: 1.5;
+}
+
+/* ============================================
+   CABEÇALHO COM BANNER CUSTOMIZADO
+   ============================================ */
+.cabecalho {
+  background: linear-gradient(rgba(22, 101, 52, 0.85), rgba(22, 101, 52, 0.95)), url('../img/banner01.png') no-repeat center center;
+  background-size: cover;
+  /* color: #ffffff;  <- Remover ou comentar */
+  color: rgba(255, 255, 255, 0.5); /* <-- NOVA COR COM TRANSPARÊNCIA */
+  padding: 3rem 1.5rem;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 6px var(--cor-sombra);
+}
+
+.cabecalho h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.cabecalho p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* CONTROLE DE TEMA */
+.tema-controle-hibrido {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tema-label-desktop {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.btn-tema {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: var(--transicao);
+}
+
+.btn-tema:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* ============================================
+   CONTAINER E PROGRESSO
+   ============================================ */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.progresso {
+  background: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px var(--cor-sombra);
+}
+
+.barra {
+  height: 6px;
+  background: var(--cor-secundaria);
+  width: 33.33%;
+  border-radius: 3px;
+  transition: var(--transicao);
+  margin-bottom: 1rem;
+}
+
+.etapas-indicador {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.etapas-indicador li {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--cor-texto);
+  opacity: 0.5;
+  transition: var(--transicao);
+}
+
+.etapas-indicador li.ativa {
+  opacity: 1;
+  color: var(--cor-primaria);
+}
+
+/* ============================================
+   ETAPAS DO FORMULÁRIO (OCULTA/ATIVA)
+   ============================================ */
+.etapa {
+  display: none;
+  background: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 2rem;
+  box-shadow: 0 4px 6px var(--cor-sombra);
+  animation: fadeIn 0.4s ease;
+}
+
+.etapa.ativa {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.etapa h2 {
+  font-size: 1.4rem;
+  color: var(--cor-primaria);
+  margin-bottom: 1.5rem;
+}
+
+/* FORMULÁRIOS */
+form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+form select, form input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid var(--cor-borda);
+  border-radius: 8px;
+  background: var(--cor-card);
+  color: var(--cor-texto);
+  font-size: 1rem;
+  transition: var(--transicao);
+}
+
+form select:focus, form input:focus {
+  border-color: var(--cor-primaria);
+  outline: none;
+}
+
+/* BOTÕES */
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transicao);
+}
+
+.btn.proximo, .btn.calcular {
+  background: var(--cor-primaria);
+  color: #ffffff;
+}
+
+.btn.proximo:hover, .btn.calcular:hover {
+  background: #0f5229;
+}
+
+.btn.voltar {
+  background: transparent;
+  border: 2px solid var(--cor-borda);
+  color: var(--cor-texto);
+}
+
+.btn.voltar:hover {
+  background: var(--cor-borda);
+}
+
+.btn.resetar {
+  background: var(--cor-secundaria);
+  color: #ffffff;
+}
+
+.btn.resetar:hover {
+  background: #4d7c0f;
+}
+
+/* ============================================
+   GRID DE RESULTADOS
+   ============================================ */
+.resultado-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card {
+  background: var(--fundo);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.card h3 {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--cor-primaria);
+}
+
+.card.destaque {
+  border: 2px solid var(--cor-secundaria);
+  background: rgba(101, 163, 13, 0.05);
+}
+
+.mensagem-tema {
+  font-style: italic;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--cor-primaria);
+  font-weight: 500;
+}
+
+/* ============================================
+   BOTÃO DE AJUDA FLUTUANTE
+   ============================================ */
+.btn-ajuda-flutuante {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--cor-primaria);
+  color: #ffffff;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 999;
+  transition: var(--transicao);
+}
+
+.btn-ajuda-flutuante:hover {
+  transform: translateY(-3px);
+  background: #0f5229;
+}
+
+/* ============================================
+   MODAL DE TUTORIAL
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+  opacity: 0; pointer-events: none;
+  transition: var(--transicao);
+}
+
+.modal-overlay.ativo {
+  opacity: 1; pointer-events: auto;
+}
+
+.modal-conteudo {
+  background: var(--cor-card);
+  color: var(--cor-texto);
+  width: 90%; max-width: 550px;
+  border-radius: var(--raio);
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  overflow: hidden;
+  animation: modalSlide 0.3s ease;
+}
+
+@keyframes modalSlide {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.btn-fechar-modal {
+  position: absolute; top: 1rem; right: 1rem;
+  background: transparent; border: none; font-size: 1.8rem;
+  color: var(--cor-texto); opacity: 0.5; cursor: pointer;
+}
+
+.btn-fechar-modal:hover { opacity: 1; }
+
+.modal-header { padding: 1.5rem 2rem; border-bottom: 1px solid var(--cor-borda); }
+.modal-header h2 { color: var(--cor-primaria); }
+
+.modal-corpo { padding: 2rem; max-height: 60vh; overflow-y: auto; }
+
+.passo-tutorial {
+  display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start;
+}
+
+.numero-passo {
+  background: var(--cor-primaria); color: #fff; width: 40px; height: 40px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; font-weight: bold; flex-shrink: 0;
+}
+
+.conteudo-passo h3 { color: var(--cor-primaria); margin-bottom: 0.25rem; font-size: 1.1rem; }
+
+.dica-destaque {
+  background: rgba(101, 163, 13, 0.1); border: 2px solid var(--cor-secundaria);
+  border-radius: 8px; padding: 1rem; margin-top: 1.5rem;
+}
+.dica-destaque h4 { color: var(--cor-primaria); margin-bottom: 0.25rem; }
+
+.modal-rodape { padding: 1rem 2rem; border-top: 1px solid var(--cor-borda); text-align: center; }
+
+.btn-comecar {
+  background: var(--cor-primaria); color: #fff; border: none; padding: 0.8rem 2rem; border-radius: 8px;
+  font-size: 1rem; font-weight: 600; cursor: pointer; width: 100%; transition: var(--transicao);
+}
+.btn-comecar:hover { background: #0f5229; }
+
+/* ============================================
+   RODAPÉ
+   ============================================ */
+.rodape {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
+  border-top: 1px solid var(--cor-borda);
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.credito-banner {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 0.5rem;
+}
